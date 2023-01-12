@@ -44,7 +44,7 @@ const ProductItem = (props) => {
                                     {productData.name}
                                 </Text>
                                 <Text color="#000" size={14}>
-                                    {currentPrice}
+                                    
                                 </Text>
                             </Col>
                             <Col>
