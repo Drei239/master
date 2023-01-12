@@ -2,9 +2,6 @@ import { Grid, Card, Col, Text, Row, Button } from "@nextui-org/react";
 
 const ProductItem = (props) => {
     const { productData } = props;
-    let availableProduct = productData.available;
-    console.log(availableProduct);
-    if ({ availableProduct } === false) {
         return (
             <Grid xs={3}>
                 <Card css={{ w: "100%", h: "400px" }}>
@@ -66,5 +63,4 @@ const ProductItem = (props) => {
             </Grid>
         )
     }
-}
 export default ProductItem;
