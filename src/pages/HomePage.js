@@ -5,6 +5,7 @@ import mockProduct from "../mocks/mockProduct.json";
 
 const HomePage = () => {
     const products = mockProduct;
+    
     return (
         <div>
             <Search />

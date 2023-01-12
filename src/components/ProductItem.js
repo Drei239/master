@@ -2,6 +2,9 @@ import { Grid, Card, Col, Text, Row, Button } from "@nextui-org/react";
 
 const ProductItem = (props) => {
     const { productData } = props;
+    const availableProduct = productData.available;
+    const saleRate = (productData.sale) / 100;
+    if (availableProduct === false) {
         return (
             <Grid xs={3}>
                 <Card css={{ w: "100%", h: "400px" }}>
@@ -40,7 +43,7 @@ const ProductItem = (props) => {
                                     {productData.name}
                                 </Text>
                                 <Text color="#000" size={14}>
-                                    {productData.price}
+                                    {(productData.price) * (1 - saleRate)}
                                 </Text>
                             </Col>
                             <Col>
@@ -63,4 +66,5 @@ const ProductItem = (props) => {
             </Grid>
         )
     }
+}
 export default ProductItem;
