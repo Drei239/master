@@ -4,6 +4,7 @@ const ProductItem = (props) => {
     const { productData } = props;
     const availableProduct = productData.available;
     const currentPrice = productData.price * (1 - productData.sale / 100);
+    
     if (availableProduct === false) {
         return (
             <Grid xs={3}>
@@ -43,7 +44,7 @@ const ProductItem = (props) => {
                                     {productData.name}
                                 </Text>
                                 <Text color="#000" size={14}>
-                                    {currentPrice}
+                                    
                                 </Text>
                             </Col>
                             <Col>
