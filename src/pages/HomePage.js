@@ -22,13 +22,16 @@ const HomePage = () => {
     }, []);
 
     return (
-        <div>
-            <Search />
-            <Spacer y={1} />
-            <Grid.Container gap={2}>
-                {products.map((product) => <ProductItem productData={product} />)}
-            </Grid.Container>
-        </div>
+        <>
+        <Search />
+        <Container>
+            123465789098756432123456789
+        <Spacer y={1} />
+        <Grid.Container gap={2}>
+            {products.map((product) => <ProductItem productData={product} />)}
+        </Grid.Container>
+        </Container>
+    </>
     )
 }
 export default HomePage;
