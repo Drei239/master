@@ -4,6 +4,10 @@ const ProductItem = (props) => {
     const { productData } = props;
     const currentPrice = productData.price * (1 - productData.sale / 100);
     const nameProduct = productData.name;
+    const priceProduct = productData.price;
+    //1111111111111111111111111
+    //222222222222222222222222
+    //333333333333333333333333
 
     if (productData.available === true) {
         return (
