@@ -3,6 +3,7 @@ import { Grid, Card, Col, Text, Row, Button } from "@nextui-org/react";
 const ProductItem = (props) => {
     const { productData } = props;
     const currentPrice = productData.price * (1 - productData.sale / 100);
+    const nameProduct = productData.name;
 
     if (productData.available === true) {
         return (
