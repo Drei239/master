@@ -1,13 +1,9 @@
 import { Grid, Card, Col, Text, Row, Button } from "@nextui-org/react";
+import { Link } from "react-router-dom";
 
 const ProductItem = (props) => {
     const { productData } = props;
     const currentPrice = productData.price * (1 - productData.sale / 100);
-    const nameProduct = productData.name;
-    const priceProduct = productData.price;
-    //1111111111111111111111111
-    //222222222222222222222222
-    //333333333333333333333333
 
     if (productData.available === true) {
         return (
@@ -54,21 +50,23 @@ const ProductItem = (props) => {
                             <Col>
                                 <Row justify="flex-end">
                                     <Button flat auto rounded color="secondary">
-                                        <Text
-                                            css={{ color: "inherit" }}
-                                            size={14}
-                                            weight="bold"
-                                            transform="uppercase"
-                                        >
-                                            Xem chi tiết
-                                        </Text>
+                                        <Link to={`/detail/${productData.id}`}>
+                                            <Text
+                                                css={{ color: "inherit" }}
+                                                size={14}
+                                                weight="bold"
+                                                transform="uppercase"
+                                            >
+                                                Xem chi tiết
+                                            </Text>
+                                        </Link>
                                     </Button>
                                 </Row>
                             </Col>
                         </Row>
                     </Card.Footer>
-                </Card>
-            </Grid>
+                </Card >
+            </Grid >
         )
     }
 }
