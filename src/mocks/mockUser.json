@@ -1,0 +1,47 @@
+[
+    {
+        "createdAt": "2023-01-06T16:17:16.060Z",
+        "userName": "abc",
+        "password": "123",
+        "role": false,
+        "phoneNumber": "1-346-523-9627 x59503",
+        "address": "address 1",
+        "id": "1"
+    },
+    {
+        "createdAt": "2023-01-06T11:10:51.987Z",
+        "userName": "Magnus_Zieme",
+        "password": "FkNxF69r2AxRH0e",
+        "role": false,
+        "phoneNumber": "456-975-4183 x22089",
+        "address": "address 2",
+        "id": "2"
+    },
+    {
+        "createdAt": "2023-01-07T03:09:34.518Z",
+        "userName": "Albina92",
+        "password": "DaL7zyth3mh4Ofo",
+        "role": false,
+        "phoneNumber": "693-838-2270 x000",
+        "address": "address 3",
+        "id": "3"
+    },
+    {
+        "createdAt": "2023-01-06T22:36:27.076Z",
+        "userName": "Saige72",
+        "password": "GTCPQUdfNdKqtBx",
+        "role": false,
+        "phoneNumber": "1-311-458-5955 x426",
+        "address": "address 4",
+        "id": "4"
+    },
+    {
+        "createdAt": "2023-01-07T03:36:14.966Z",
+        "userName": "Alexandrine45",
+        "password": "RwG2IbILT6x2oOq",
+        "role": false,
+        "phoneNumber": "645-251-2812",
+        "address": "address 5",
+        "id": "5"
+    }
+]

@@ -1,7 +1,30 @@
-import { Button, Navbar, Text } from "@nextui-org/react";
+import { Button, Navbar, Text, Modal, Input } from "@nextui-org/react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { Mail } from "./Mail";
+import { Password } from "./Password";
+import mockUser from "../mocks/mockUser.json";
 
 const Header = () => {
+    const [isVisible, setIsVisible] = useState(false);
+    const dataUser = mockUser;
+
+
+
+    function openLoginModal() {
+        setIsVisible(true);
+    }
+
+    function closeLoginModal() {
+        setIsVisible(false)
+    }
+
+    function handleLogin() {
+        let inputUsername = document.getElementById("username")?.value;
+        console.log(inputUsername);
+        let inputPassword = document.getElementById("password")?.value;
+        console.log(inputPassword);
+    }
     return (
         <Navbar>
             <Navbar.Brand>
@@ -27,8 +50,52 @@ const Header = () => {
                     <Button size="sm">Đăng ký</Button>
                 </Navbar.Item>
                 <Navbar.Item>
-                    <Button size="sm">Đăng nhập</Button>
+                    <Button size="sm" onClick={openLoginModal}>Đăng nhập</Button>
                 </Navbar.Item>
+                {/* Modal Login */}
+                <Modal blur open={isVisible} onClose={closeLoginModal}>
+                    {/* Modal Header */}
+                    <Modal.Header>
+                        <Text id="modal-title" size={18}>
+                            Welcome to
+                            <Text b size={18}>
+                                {""} Mobile Showroom
+                            </Text>
+                        </Text>
+                    </Modal.Header>
+                    {/* Modal Body */}
+                    <Modal.Body>
+                        <Input
+                            id="username"
+                            clearable
+                            bordered
+                            fullWidth
+                            color="primary"
+                            size="lg"
+                            placeholder="Email"
+                            contentLeft={<Mail fill="currentColor" />}
+                        />
+                        <Input
+                            type="password"
+                            id="password"
+                            clearable
+                            bordered
+                            fullWidth
+                            color="primary"
+                            size="lg"
+                            placeholder="Password"
+                            contentLeft={<Password fill="currentColor" />}
+                        /></Modal.Body>
+                    {/* Modal Footer */}
+                    <Modal.Footer>
+                        <Button auto flat color="error" onPress={closeLoginModal}>
+                            Close
+                        </Button>
+                        <Button auto onPress={() => { handleLogin() }}>
+                            Sign in
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
             </Navbar.Content>
         </Navbar>
     )
