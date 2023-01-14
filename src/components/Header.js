@@ -1,15 +1,14 @@
 import { Button, Navbar, Text, Modal, Input } from "@nextui-org/react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { Mail } from "./Mail";
 import { Password } from "./Password";
 import mockUser from "../mocks/mockUser.json";
 
+
 const Header = () => {
     const [isVisible, setIsVisible] = useState(false);
     const dataUser = mockUser;
-
-
 
     function openLoginModal() {
         setIsVisible(true);
@@ -24,6 +23,23 @@ const Header = () => {
         console.log(inputUsername);
         let inputPassword = document.getElementById("password")?.value;
         console.log(inputPassword);
+        let loginChecked = false;
+        for (let i = 0; i < dataUser.length; i++) {
+            if (inputUsername == dataUser[i].userName && inputPassword == dataUser[i].password) {
+                console.log("Login thành công");
+                alert("Login thành công!");
+                loginChecked = true;
+                sessionStorage.setItem("currentLoggedIn", inputUsername);
+                break;
+            } else {
+                console.log("Login failed");
+            }
+        }
+        if (loginChecked === false) alert("Vui lòng kiểm tra lại tên đăng nhập hoặc mật khẩu!")
+    }
+
+    function handleLogout() {
+        sessionStorage.removeItem("currentLoggedIn");
     }
     return (
         <Navbar>
@@ -88,10 +104,12 @@ const Header = () => {
                         /></Modal.Body>
                     {/* Modal Footer */}
                     <Modal.Footer>
-                        <Button auto flat color="error" onPress={closeLoginModal}>
+                        {/* Nút Logout dùng để test */}
+                        <Button onClick={handleLogout}>Logout</Button>
+                        <Button auto flat color="error" onClick={closeLoginModal}>
                             Close
                         </Button>
-                        <Button auto onPress={() => { handleLogin() }}>
+                        <Button auto onClick={handleLogin}>
                             Sign in
                         </Button>
                     </Modal.Footer>
