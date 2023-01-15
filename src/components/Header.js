@@ -1,20 +1,23 @@
 import { Button, Navbar, Text, Modal, Input, Dropdown, Avatar, Grid, User, useModal } from "@nextui-org/react";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { Context } from "../context/Context";
 import { Link, useNavigate } from "react-router-dom";
 import { Mail } from "./Mail";
 import { Password } from "./Password";
 import mockUser from "../mocks/mockUser.json";
+import mockProduct from "../mocks/mockProduct.json";
 
 const Header = () => {
+
     const [isVisible, setIsVisible] = useState(false);
     const { setVisible, bindings } = useModal();
     const [cartList, setCartList] = useState([]);
+    const { counter } = useContext(Context);
     const dataUser = mockUser;
     const navigate = useNavigate();
     let loginChecked = false;
     let isLogin = localStorage.getItem("isLogin");
     let currentUserName = localStorage.getItem("currentLoggedIn");
-    console.log(isLogin);
 
     function openLoginModal() {
         setIsVisible(true);
@@ -122,7 +125,7 @@ const Header = () => {
                         : (<Button size="sm" onClick={openLoginModal}>Đăng Nhập</Button>)}
                 </Navbar.Item>
                 <Navbar.Item>
-                    <Button shadow color="error" onPress={() => setVisible(true)} size="sm">Giỏ Hàng</Button>
+                    <Button shadow color="error" onPress={() => setVisible(true)} size="sm">Giỏ Hàng {counter}</Button>
                 </Navbar.Item>
             </Navbar.Content>
             {/* Modal Login */}

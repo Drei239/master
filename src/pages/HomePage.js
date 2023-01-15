@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { Grid, Spacer, Container, Input } from "@nextui-org/react";
+import { API_PRODUCTS_URL } from "../constants";
 import Search from "../components/Search";
 import ProductItem from "../components/ProductItem";
 import mockProduct from "../mocks/mockProduct.json";
-import { API_PRODUCTS_URL } from "../constants";
+import axios from "axios";
 
-const HomePage = () => {
-    let [products, setProducts] = useState([]);
-    
+export const HomePage = () => {
+    const [products, setProducts] = useState([]);
+    const [cartCount, setCartCount] = useState(0);
+
+
     useEffect(() => {
         //mockData nhà quê
         setProducts(mockProduct);
