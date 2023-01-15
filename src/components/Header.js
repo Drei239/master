@@ -1,4 +1,4 @@
-import { Button, Navbar, Text, Modal, Input } from "@nextui-org/react";
+import { Button, Navbar, Text, Modal, Input, Dropdown, Avatar, Grid, User } from "@nextui-org/react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Mail } from "./Mail";
@@ -11,6 +11,7 @@ const Header = () => {
     const navigate = useNavigate();
     let loginChecked = false;
     let isLogin = localStorage.getItem("isLogin");
+    let currentUserName = localStorage.getItem("currentLoggedIn");
     console.log(isLogin);
 
     function openLoginModal() {
@@ -72,7 +73,47 @@ const Header = () => {
             </Navbar.Content>
             <Navbar.Content>
                 <Navbar.Item>
-                    <Button size="sm">Đăng ký</Button>
+                    {isLogin ? (<Grid>
+                        <Dropdown placement="bottom-left">
+                            <Dropdown.Trigger>
+                                <User
+                                    bordered
+                                    as="button"
+                                    size="lg"
+                                    color="primary"
+                                    name={currentUserName}
+                                    description=""
+                                    src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
+                                />
+                            </Dropdown.Trigger>
+                            <Dropdown.Menu color="primary" aria-label="User Actions">
+                                <Dropdown.Item key="profile" css={{ height: "$18" }}>
+                                    <Text b color="inherit" css={{ d: "flex" }}>
+                                        Signed in as
+                                    </Text>
+                                    <Text b color="inherit" css={{ d: "flex" }}>
+                                        {currentUserName}
+                                    </Text>
+                                </Dropdown.Item>
+                                <Dropdown.Item key="settings" withDivider>
+                                    My Settings
+                                </Dropdown.Item>
+                                <Dropdown.Item key="team_settings">Team Settings</Dropdown.Item>
+                                <Dropdown.Item key="analytics" withDivider>
+                                    Analytics
+                                </Dropdown.Item>
+                                <Dropdown.Item key="system">System</Dropdown.Item>
+                                <Dropdown.Item key="configurations">Configurations</Dropdown.Item>
+                                <Dropdown.Item key="help_and_feedback" withDivider>
+                                    Help & Feedback
+                                </Dropdown.Item>
+                                <Dropdown.Item key="logout" color="error" withDivider>
+                                    <Link onClick={handleLogout}>Log Out</Link>
+                                </Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown>
+                    </Grid>)
+                        : (<Button size="sm">Đăng ký</Button>)}
                 </Navbar.Item>
                 <Navbar.Item>
                     {isLogin ? (<Button size="sm" onClick={handleLogout}>Đăng xuất</Button>)
