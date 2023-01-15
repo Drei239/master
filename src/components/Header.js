@@ -1,4 +1,4 @@
-import { Button, Navbar, Text, Modal, Input, Dropdown, Avatar, Grid, User } from "@nextui-org/react";
+import { Button, Navbar, Text, Modal, Input, Dropdown, Avatar, Grid, User, useModal } from "@nextui-org/react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Mail } from "./Mail";
@@ -7,6 +7,8 @@ import mockUser from "../mocks/mockUser.json";
 
 const Header = () => {
     const [isVisible, setIsVisible] = useState(false);
+    const { setVisible, bindings } = useModal();
+    const [cartList, setCartList] = useState([]);
     const dataUser = mockUser;
     const navigate = useNavigate();
     let loginChecked = false;
@@ -116,8 +118,11 @@ const Header = () => {
                         : (<Button size="sm">Đăng ký</Button>)}
                 </Navbar.Item>
                 <Navbar.Item>
-                    {isLogin ? (<Button size="sm" onClick={handleLogout}>Đăng xuất</Button>)
-                        : (<Button size="sm" onClick={openLoginModal}>Đăng nhập</Button>)}
+                    {isLogin ? (<Button size="sm" onClick={handleLogout}>Đăng Xuất</Button>)
+                        : (<Button size="sm" onClick={openLoginModal}>Đăng Nhập</Button>)}
+                </Navbar.Item>
+                <Navbar.Item>
+                    <Button shadow color="error" onPress={() => setVisible(true)} size="sm">Giỏ Hàng</Button>
                 </Navbar.Item>
             </Navbar.Content>
             {/* Modal Login */}
@@ -161,6 +166,33 @@ const Header = () => {
                     </Button>
                     <Button auto onClick={handleLogin}>
                         Sign in
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+            {/* Modal Cart */}
+            <Modal
+                scroll
+                width="500px"
+                aria-labelledby="modal-title"
+                aria-describedby="modal-description"
+                {...bindings}
+            >
+                <Modal.Header>
+                    <Text id="modal-title" size={30}>
+                        GIỎ HÀNG CỦA BẠN
+                    </Text>
+                </Modal.Header>
+                <Modal.Body>
+                    <Text id="modal-description">
+                        Cart
+                    </Text>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button auto flat color="error" onPress={() => setVisible(false)}>
+                        Close
+                    </Button>
+                    <Button auto onPress={() => setVisible(false)}>
+                        Thanh toán
                     </Button>
                 </Modal.Footer>
             </Modal>
