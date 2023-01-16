@@ -53,7 +53,7 @@ const ProductItem = (props) => {
                             </Col>
                             <Col>
                                 <Row justify="flex-end">
-                                    <Button flat auto rounded color="secondary" onClick={handleAddToCart}>
+                                    <Button flat auto rounded color="secondary" onClick={() => { handleAddToCart(productData.id) }}>
                                         <Text
                                             css={{ color: "inhrederit" }}
                                             size={14}
