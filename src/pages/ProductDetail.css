@@ -1,0 +1,32 @@
+.detail{
+    display: flex;
+    text-align: left;
+}
+.cl{
+    background-color: rebeccapurple;
+}
+.main-detail{
+    width: 70%;
+    text-align: left;
+    box-shadow: 5px 5px 5px  5px #cfcece;
+    border-radius: 15px ;
+}
+.main-detail > img{
+    margin: 10px;
+    border-radius: 10px;
+}
+.aside-detail{
+    margin-left: 20px;
+    padding: 10px;
+    width: 30%;
+    height: 30%;
+    display: block;
+    position: sticky;
+    top: 50px;
+    border-radius: 0px 10px 10px 10px;
+    box-shadow: 5px 10px 10px #888888;
+
+}
+.aside-detail>div{
+    margin-bottom: 40px;
+}
