@@ -1,10 +1,14 @@
 import { Grid, Card, Col, Text, Row, Button } from "@nextui-org/react";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Context } from "../context/Context";
+import './ProductItem.css';
 
 const ProductItem = (props) => {
     const { productData } = props;
     const currentPrice = productData.price * (1 - productData.sale / 100);
-
+    const { handleAddToCart } = useContext(Context);
+    console.log(handleAddToCart);
     if (productData.available === true) {
         return (
             <Grid xs={3}>
@@ -15,18 +19,18 @@ const ProductItem = (props) => {
                                 New
                             </Text>
                             <Text h3 color="black">
-                                Acme camera
+                                {productData.name}
                             </Text>
                         </Col>
                     </Card.Header>
-                    <Card.Body css={{ p: 0 }}>
+                    <Card.Body css={{ p: 0 }} >
                         <Card.Image
                             src={productData.image}
                             width="100%"
                             height="100%"
                             objectFit="cover"
                             alt="Card example background"
-                        />
+                        ></Card.Image>
                     </Card.Body>
                     <Card.Footer
                         isBlurred
@@ -40,26 +44,24 @@ const ProductItem = (props) => {
                     >
                         <Row>
                             <Col>
-                                <Text color="#000" size={14}>
-                                    {productData.name}
-                                </Text>
-                                <Text color="#000" size={14}>
+                                <Text color="#000" size={14} weight="bold">
                                     {currentPrice}
                                 </Text>
+                                <Link className="link-detail" to={`/detail/${productData.id}`}>
+                                    Xem chi tiết
+                                </Link>
                             </Col>
                             <Col>
                                 <Row justify="flex-end">
-                                    <Button flat auto rounded color="secondary">
-                                        <Link to={`/detail/${productData.id}`}>
-                                            <Text
-                                                css={{ color: "inherit" }}
-                                                size={14}
-                                                weight="bold"
-                                                transform="uppercase"
-                                            >
-                                                Xem chi tiết
-                                            </Text>
-                                        </Link>
+                                    <Button flat auto rounded color="secondary" onClick={() => { handleAddToCart(productData.id) }}>
+                                        <Text
+                                            css={{ color: "inhrederit" }}
+                                            size={14}
+                                            weight="bold"
+                                            transform="uppercase"
+                                        >
+                                            ADD TO CART
+                                        </Text>
                                     </Button>
                                 </Row>
                             </Col>
