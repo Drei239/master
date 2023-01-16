@@ -4,6 +4,7 @@ import mockProduct from "../mocks/mockProduct.json";
 export const Context = createContext();
 
 export const ContextProvider = ({ children }) => {
+    // Test Push to trung
     const [counter, setCounter] = useState(0);
     const [cartList, setCartList] = useState([]);
     const [product, setProduct] = useState([]);
