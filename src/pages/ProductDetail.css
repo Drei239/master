@@ -1,21 +1,25 @@
-.detail{
+.detail {
     display: flex;
     text-align: left;
 }
-.cl{
+
+.cl {
     background-color: rebeccapurple;
 }
-.main-detail{
+
+.main-detail {
     width: 70%;
     text-align: left;
-    box-shadow: 5px 5px 5px  5px #cfcece;
-    border-radius: 15px ;
+    box-shadow: 5px 5px 5px 5px #cfcece;
+    border-radius: 15px;
 }
-.main-detail > img{
+
+.main-detail>img {
     margin: 10px;
     border-radius: 10px;
 }
-.aside-detail{
+
+.aside-detail {
     margin-left: 20px;
     padding: 10px;
     width: 30%;
@@ -27,6 +31,7 @@
     box-shadow: 5px 10px 10px #888888;
 
 }
-.aside-detail>div{
+
+.aside-detail>div {
     margin-bottom: 40px;
 }

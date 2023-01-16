@@ -33,10 +33,10 @@ const ProductDetail = () => {
   };
   //Lấy đc product data = id cho hiển thị ra nội dung chi tiết sản phẩm
   return (<>
-    <Container css={{marginTop:"20px"}}>
+    <Container css={{ marginTop: "20px" }}>
       <div className="detail">
         <div className="main-detail">
-          <img src={product.image} style={{objectFit:"cover"}}/>
+          <img src={product.image} style={{ objectFit: "cover" }} />
           <Container>
             <Text
               size={20}
@@ -172,7 +172,7 @@ const ProductDetail = () => {
                         css={{ marginLeft: "40px" }}
                       >
                         {" "}
-                        Bảo hành <span style={{fontWeight:"bold"}}>24 tháng chính hãng</span>{" "}
+                        Bảo hành <span style={{ fontWeight: "bold" }}>24 tháng chính hãng</span>{" "}
                       </Text>
                     </li>
                   </ul>
@@ -184,7 +184,7 @@ const ProductDetail = () => {
               <Card.Body>
                 <Text weight={"bold"} size={20}>
                   🎁 Dự kiến vận chuyển <Spacer y={0.2} />
-                  <Text size={16}  css={{ marginLeft: "40px" }}>
+                  <Text size={16} css={{ marginLeft: "40px" }}>
                     {" "}
                     3 đến 5 ngày kể từ ngày đặt hàng
                   </Text>
@@ -250,13 +250,13 @@ const ProductDetail = () => {
           </Modal>
         </aside>
       </div>
-      <Spacer/>
+      <Spacer />
       <div>
-      <Text css={{textAlign:"left"}} size={30}> sản phẩm bạn có thể thích</Text>
-      <SlideItem/>
+        <Text css={{ textAlign: "left" }} size={30}> sản phẩm bạn có thể thích</Text>
+        <SlideItem />
       </div></Container>
-      <Footer/>
-      </>
+    <Footer />
+  </>
   );
 };
 export default ProductDetail;
