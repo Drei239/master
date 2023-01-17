@@ -10,9 +10,7 @@ import axios from "axios";
 
 export const HomePage = () => {
     const [products, setProducts] = useState([]);
-    const [cartCount, setCartCount] = useState(0);
-
-
+    
     useEffect(() => {
         //mockData nhà quê
         setProducts(mockProduct);

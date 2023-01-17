@@ -7,19 +7,21 @@ import './ProductItem.css';
 const ProductItem = (props) => {
     const { productData } = props;
     const currentPrice = productData.price * (1 - productData.sale / 100);
+    const config = { style: 'currency', currency: 'VND', maximumFractionDigits: 9 }
+    const formatedPrice = new Intl.NumberFormat('vi-VN', config).format(currentPrice);
     const { handleAddToCart } = useContext(Context);
-    
+
     if (productData.available === true) {
         return (
             <Grid xs={3}>
                 <Card css={{ w: "100%", h: "400px" }}>
-                    <Card.Header css={{ position: "absolute", zIndex: 1, top: 5 }}>
+                    <Card.Header css={{ position: "absolute", zIndex: 1, top: 0, right: -120 }}>
                         <Col>
-                            <Text size={12} weight="bold" transform="uppercase" color="#ffffffAA">
+                            <Text size={14} weight="bold" transform="uppercase" color="red">
                                 New
                             </Text>
-                            <Text h3 color="black">
-                                {productData.name}
+                            <Text size={14} weight="bold" transform="uppercase" color="red">
+                                Sale {productData.sale}%
                             </Text>
                         </Col>
                     </Card.Header>
@@ -45,13 +47,16 @@ const ProductItem = (props) => {
                         <Row>
                             <Col>
                                 <Text color="#000" size={14} weight="bold">
-                                    {currentPrice}
+                                    {productData.name}
                                 </Text>
                                 <Link className="link-detail" to={`/detail/${productData.id}`}>
                                     Xem chi tiết
                                 </Link>
                             </Col>
                             <Col>
+                                <Text color="#000" size={14} weight="bold">
+                                    {formatedPrice}
+                                </Text>
                                 <Row justify="flex-end">
                                     <Button flat auto rounded color="secondary" onClick={() => { handleAddToCart(productData.id) }}>
                                         <Text

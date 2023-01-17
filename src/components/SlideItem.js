@@ -9,6 +9,8 @@ import "./SlideItem.css"
 
 export default function SlideItem() {
   let [products, setProducts] = useState([]);
+  const config = { style: 'currency', currency: 'VND', maximumFractionDigits: 9 }
+
 
   useEffect(() => {
     //mockData nhà quê
@@ -53,11 +55,9 @@ export default function SlideItem() {
                 />
               </Card.Body>
               <Card.Footer css={{ justifyItems: "flex-start" }}>
-
                 <Text b>{item.name} <Text css={{ textAlign: "left", color: "$accents7", fontWeight: "$semibold", fontSize: "15px" }}>
-                  {item.price * (1 - item.sale / 100)} VNĐ
+                  {Intl.NumberFormat('vi-VN', config).format(item.price * (1 - item.sale / 100))} VNĐ
                 </Text> <Text>{rating()}</Text></Text><Spacer />
-
               </Card.Footer>
             </Card>
           </Link>

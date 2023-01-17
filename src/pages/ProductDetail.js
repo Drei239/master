@@ -27,6 +27,8 @@ const ProductDetail = () => {
   const { setVisible, bindings } = useModal();
   const product = productData.find(({ id }) => id == params.product_id);
   const currentPrice = product.price * (1 - product.sale / 100);
+  const config = { style: 'currency', currency: 'VND', maximumFractionDigits: 9 }
+  const formatedPrice = new Intl.NumberFormat('vi-VN', config).format(currentPrice);
   console.log(product);
   const buyNow = () => {
     setVisible(true);
@@ -203,7 +205,7 @@ const ProductDetail = () => {
               size={20}
               css={{ position: "absolute", top: "55px", left: "20px" }}
             >
-              {currentPrice} VNĐ
+              {formatedPrice} VNĐ
             </Text>
           </div>
           <Grid.Container>
@@ -244,7 +246,7 @@ const ProductDetail = () => {
                 Thoát
               </Button>
               <Button auto onPress={() => setVisible(false)}>
-                Mua ngay với giá: {currentPrice}
+                Mua ngay với giá: {formatedPrice}
               </Button>
             </Modal.Footer>
           </Modal>
