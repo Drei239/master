@@ -32,37 +32,38 @@ export default function SlideItem() {
     list.push(mockProduct[i])
   }
   let rating = () => {
-    let i = Math.floor(Math.random() * 5);
-    let str = "⭐";
+    let i = Math.floor(Math.random(6) * 5);
+    let str = "⭐⭐";
     for (let a = 0; a < i; a++) {
       str = str + "⭐"
     }
-    return (<p>nhận được : {str} </p>)
+    return (<p>Đánh giá: {str} </p>)
   }
+  if(products.length>0){
   return (
-    <Grid.Container gap={0} justify="flex-start" className="slide-bar">
+    <Grid.Container gap={1} justify="flex-start" className="slide-bar">
       {list.map((item, index) => (
-        <Grid xs={6} sm={2} key={index}>
+        <Grid xs={2}  key={index}>
           <Link to={`/detail/${item.id}`}>
             <Card isPressable isHoverable css={{ borderRadius: "0px" }}>
               <Card.Body css={{ p: 10 }} >
                 <Card.Image
                   src={item.image}
-                  objectFit="fix"
-                  width="100%"
-                  height={140}
+                  objectFit="fill"
+                  width={200}
+                  height={170}
                   alt={item.name}
                 />
               </Card.Body>
-              <Card.Footer css={{ justifyItems: "flex-start" }}>
-                <Text b>{item.name} <Text css={{ textAlign: "left", color: "$accents7", fontWeight: "$semibold", fontSize: "15px" }}>
+              <Card.Footer css={{ justifyItems: "flex-start", height:"130px" }}>
+                <Text b>{item.name} <Text css={{ textAlign: "left", color: "$accents7", fontWeight: "$semibold", fontSize: "15px",}}>
                   {Intl.NumberFormat('vi-VN', config).format(item.price * (1 - item.sale / 100))} VNĐ
-                </Text> <Text>{rating()}</Text></Text><Spacer />
+                </Text> <Text css={{position:"absolute", top:"285px"}}>{rating()}</Text></Text><Spacer />
               </Card.Footer>
             </Card>
           </Link>
         </Grid>
       ))}
     </Grid.Container>
-  );
+  );}
 }

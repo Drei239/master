@@ -207,7 +207,7 @@ const ProductDetail = () => {
         </div>
         <aside className="aside-detail">
           <div>
-            <Text size={30} weight="bold" css={{ alignItems: "right" }}>
+            <Text size={30} weight="bold" css={{ alignItems: "right",  width:"100%", height:"50px",overflow:"hidden",}} >
               {product.name}
             </Text>
             <Text

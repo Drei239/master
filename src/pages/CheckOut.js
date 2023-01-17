@@ -13,14 +13,7 @@ const CheckOut = () => {
 
 
   useEffect(() => {
-    //mockData nhà quê
     setProducts(mockProduct);
-
-    //Fetch API = Axios
-    // axios.get(API_PRODUCTS_URL).then(({ data }) => {
-    //     console.log(data);
-    //     setProducts(data);
-    // });
   }, []);
 
   const { cartList, setCartList, setCounter } = useContext(Context);
