@@ -15,7 +15,8 @@ const ProductItem = (props) => {
         return (
             <Grid xs={3}>
                 <Card css={{ w: "100%", h: "400px" }}>
-                    <Card.Header css={{ position: "absolute", zIndex: 1, top: 0, right: -120 }}>
+                <Link className="link-detail" to={`/detail/${productData.id}`}>
+                    <Card.Header css={{ position: "absolute", zIndex: 1, top: 5}}>
                         <Col>
                             <Text size={14} weight="bold" transform="uppercase" color="red">
                                 New
@@ -29,11 +30,12 @@ const ProductItem = (props) => {
                         <Card.Image
                             src={productData.image}
                             width="100%"
-                            height="100%"
-                            objectFit="cover"
+                            height="400px"
+                            objectFit="fill"
                             alt="Card example background"
                         ></Card.Image>
                     </Card.Body>
+                    </Link>
                     <Card.Footer
                         isBlurred
                         css={{

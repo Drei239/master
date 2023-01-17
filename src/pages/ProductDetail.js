@@ -19,7 +19,9 @@ import {
 import "semantic-ui-css/semantic.min.css";
 import SlideItem from "../components/SlideItem";
 import Footer from "../components/Footer";
-
+import CheckOut from "../pages/CheckOut";
+import { Context } from "../context/Context";
+import { useContext } from "react";
 
 const ProductDetail = () => {
   const params = useParams();
@@ -30,9 +32,16 @@ const ProductDetail = () => {
   const config = { style: 'currency', currency: 'VND', maximumFractionDigits: 9 }
   const formatedPrice = new Intl.NumberFormat('vi-VN', config).format(currentPrice);
   console.log(product);
+  const { handleAddToCart } = useContext(Context)
   const buyNow = () => {
     setVisible(true);
   };
+
+  const CheckOutNow=()=>{
+    alert("cảm ơn bạn đã mua hàng");
+    setVisible(false)
+  }
+
   //Lấy đc product data = id cho hiển thị ra nội dung chi tiết sản phẩm
   return (<>
     <Container css={{ marginTop: "20px" }}>
@@ -209,7 +218,7 @@ const ProductDetail = () => {
             </Text>
           </div>
           <Grid.Container>
-            <Button flat color="warning" auto>
+            <Button flat color="warning" auto onPress={()=>handleAddToCart(product.id)}>
               Thêm vào giỏ hàng
             </Button>
             <Spacer />

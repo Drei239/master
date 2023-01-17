@@ -41,6 +41,6 @@ export const ContextProvider = ({ children }) => {
         setCartList(newCartList);
     }
     return <Context.Provider
-        value={{ counter, handleAddToCart, cartList }}>{children}
+        value={{ counter, handleAddToCart, cartList,setCartList,setCounter }}>{children}
     </Context.Provider>;
 }

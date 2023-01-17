@@ -4,6 +4,8 @@ import "./ProductItem.css";
 function CartItem(props) {
     const { id, name, image, qty, price, sale } = props;
     const currentPrice = price * (1 - sale / 100);
+    const config = { style: 'currency', currency: 'VND', maximumFractionDigits: 9 }
+    const formatedPrice = new Intl.NumberFormat('vi-VN', config).format(currentPrice);
 
     return (
         <div>
@@ -18,7 +20,7 @@ function CartItem(props) {
                     <Text>{qty}</Text>
                 </Grid>
                 <Grid xs={1.5}>
-                    <Text>{currentPrice*qty}</Text>
+                    <Text>{Intl.NumberFormat('vi-VN', config).format(currentPrice*qty)}</Text>
                 </Grid>
                 <Grid xs={2}>
                     <Button size="xs">-</Button>
