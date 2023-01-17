@@ -1,4 +1,4 @@
-import { Button, Navbar, Text, Modal, Input, Dropdown, Avatar, Grid, User, useModal } from "@nextui-org/react";
+import { Button, Navbar, Text, Modal, Input, Dropdown, Avatar, Grid, User, useModal, Card } from "@nextui-org/react";
 import { useState, useContext } from "react";
 import { Context } from "../context/Context";
 import { Link, useNavigate } from "react-router-dom";
@@ -6,18 +6,20 @@ import { Mail } from "./Mail";
 import { Password } from "./Password";
 import mockUser from "../mocks/mockUser.json";
 import mockProduct from "../mocks/mockProduct.json";
+import CartItem from "./CartItem";
 
 const Header = () => {
-
     const [isVisible, setIsVisible] = useState(false);
     const { setVisible, bindings } = useModal();
-    const [cartList, setCartList] = useState([]);
-    const { counter } = useContext(Context);
+    const { counter, cartList } = useContext(Context);
     const dataUser = mockUser;
     const navigate = useNavigate();
     let loginChecked = false;
     let isLogin = localStorage.getItem("isLogin");
     let currentUserName = localStorage.getItem("currentLoggedIn");
+
+    const newCartList = cartList.filter((a) => a);
+    console.log(newCartList);
 
     function openLoginModal() {
         setIsVisible(true);
@@ -56,6 +58,7 @@ const Header = () => {
         localStorage.removeItem("isLogin");
         navigate("/");
     }
+
     return (
         <Navbar>
             <Navbar.Brand>
@@ -172,6 +175,7 @@ const Header = () => {
                     </Button>
                 </Modal.Footer>
             </Modal>
+
             {/* Modal Cart */}
             <Modal
                 scroll
@@ -186,9 +190,32 @@ const Header = () => {
                     </Text>
                 </Modal.Header>
                 <Modal.Body>
-                    <Text id="modal-description">
-                        Cart
-                    </Text>
+                    <Grid.Container gap={1} justify="center">
+                        <Grid xs={3}>
+                            <Text>Tên sản phẩm</Text>
+                        </Grid>
+                        <Grid xs={3}>
+                            <Text>Hình ảnh</Text>
+                        </Grid>
+                        <Grid xs={2}>
+                            <Text>Số lượng</Text>
+                        </Grid>
+                        <Grid xs={1.5}>
+                            <Text>Giá</Text>
+                        </Grid>
+                        <Grid xs={2}>
+                        </Grid>
+                    </Grid.Container>
+                    {cartList.map(({ id, name, image, qty, price, sale }) => (
+                        <CartItem
+                            id={id}
+                            image={image}
+                            name={name}
+                            qty={qty}
+                            price={price}
+                            sale={sale}
+                        />
+                    ))}
                 </Modal.Body>
                 <Modal.Footer>
                     <Button auto flat color="error" onPress={() => setVisible(false)}>

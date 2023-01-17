@@ -7,6 +7,7 @@ import HomePage from "./pages/HomePage";
 import ContactPage from "./pages/ContactPage";
 import AboutPage from "./pages/AboutPage";
 import ProductDetail from "./pages/ProductDetail";
+import SearchProducts from "./pages/SearchProducts";
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/detail/:product_id" element={<ProductDetail />} />
+          <Route path="/search/:product_name" element={<SearchProducts />} />
         </Routes>
       </ContextProvider>
     </div>

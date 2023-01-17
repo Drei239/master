@@ -11,7 +11,6 @@ export const ContextProvider = ({ children }) => {
 
     useEffect(() => {
         setProduct(mockProduct);
-        console.log(product);
     }, []);
 
     const handleAddToCart = (productId) => {

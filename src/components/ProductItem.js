@@ -8,7 +8,7 @@ const ProductItem = (props) => {
     const { productData } = props;
     const currentPrice = productData.price * (1 - productData.sale / 100);
     const { handleAddToCart } = useContext(Context);
-    console.log(handleAddToCart);
+    
     if (productData.available === true) {
         return (
             <Grid xs={3}>

@@ -4,6 +4,8 @@ import { API_PRODUCTS_URL } from "../constants";
 import Search from "../components/Search";
 import ProductItem from "../components/ProductItem";
 import mockProduct from "../mocks/mockProduct.json";
+import SlideItem from "../components/SlideItem";
+import Footer from "../components/Footer";
 import axios from "axios";
 
 export const HomePage = () => {
@@ -24,13 +26,16 @@ export const HomePage = () => {
 
     return (
         <>
-            <Search />
+
             <Container>
+                <Search />
                 <Spacer y={1} />
-                <Grid.Container gap={2}>
+                <Grid.Container gap={1}>
                     {products.map((product) => <ProductItem productData={product} />)}
+                    <SlideItem />
                 </Grid.Container>
             </Container>
+            <Footer />
         </>
     )
 }
