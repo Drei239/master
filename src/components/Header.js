@@ -7,6 +7,7 @@ import { Password } from "./Password";
 import mockUser from "../mocks/mockUser.json";
 import mockProduct from "../mocks/mockProduct.json";
 import CartItem from "./CartItem";
+import CheckOut from "../pages/CheckOut";
 
 const Header = () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -219,10 +220,12 @@ const Header = () => {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button auto flat color="error" onPress={() => setVisible(false)}>
-                        Close
+                        Đóng
                     </Button>
-                    <Button auto onPress={() => setVisible(false)}>
-                        Thanh toán
+                    
+                    <Button auto color="primary" onPress={() => setVisible(false) }>
+                    <Link to={`/checkout/`} style={{ color: "White" }}>
+                     thanh toán</Link>
                     </Button>
                 </Modal.Footer>
             </Modal>
